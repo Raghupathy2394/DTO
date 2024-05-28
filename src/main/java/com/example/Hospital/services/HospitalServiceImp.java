@@ -1,5 +1,7 @@
 package com.example.Hospital.services;
 
+import java.util.List;
+
 import com.example.Hospital.DTO.HospitalDTO;
 
 public interface HospitalServiceImp {
@@ -8,7 +10,10 @@ public interface HospitalServiceImp {
 
 	HospitalDTO create(HospitalDTO hospitaldto);
 
-	HospitalDTO getname(String name);
+	HospitalDTO update(HospitalDTO hospitaldto);
 
+	String delete(int id);
+
+	HospitalDTO getname(String name);
 
 }
