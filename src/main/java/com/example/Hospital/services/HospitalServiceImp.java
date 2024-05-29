@@ -14,6 +14,11 @@ public interface HospitalServiceImp {
 
 	String delete(int id);
 
-	HospitalDTO getname(String name);
+	HospitalDTO getname(String name); 
+
+	List<HospitalDTO> getall();
+
+	List<HospitalDTO> createall(List<HospitalDTO> hospitaldto);
+
 
 }

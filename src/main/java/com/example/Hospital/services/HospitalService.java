@@ -1,5 +1,6 @@
 package com.example.Hospital.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,13 +69,33 @@ public class HospitalService implements HospitalServiceImp {
 		return dto;
 	}
 
-}
+	@Override
+	public List<HospitalDTO> getall() {
+		List<Hospital> getall = hospitalRepo.findAll();
+		List<HospitalDTO> dto = new ArrayList<>();
+		for (Hospital h : getall) {
+			HospitalDTO hostdto = new HospitalDTO();
+			hostdto.setId(h.getId());
+			hostdto.setName(h.getName());
+			hostdto.setWork(h.getWork());
+			hostdto.setSalary(h.getSalary());
+			dto.add(hostdto);
+		}
+		return dto;
+	}
 
-/*
- * @Override public HospitalDTO getname(String name) { Optional<Hospital>
- * hospital=hospitalRepo.findByname(name); Hospital
- * hospitalentity=hospital.get(); HospitalDTO dto=new HospitalDTO();
- * dto.setId(hospitalentity.getId()); dto.setName(hospitalentity.getName());
- * dto.setSalary(hospitalentity.getSalary());
- * dto.setWork(hospitalentity.getWork()); return dto; }
- */
+	@Override
+	public List<HospitalDTO> createall(List<HospitalDTO> hospitaldto) {
+	List<Hospital> hospital=hospitalRepo.saveAll(hospitaldto);
+	List<HospitalDTO> dto=new ArrayList<>();
+	for(Hospital h:hospital) {
+		HospitalDTO hostdto=new HospitalDTO();
+		hostdto.setId(h.getId());
+		hostdto.setName(h.getName());
+		hostdto.setWork(h.getWork());
+		hostdto.setSalary(h.getSalary());
+		dto.add(hostdto);
+	} return dto;
+		
+	} 
+}

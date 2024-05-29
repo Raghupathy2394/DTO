@@ -26,8 +26,12 @@ public class HospitalController {
 	@GetMapping("/get/{id}")
 	public HospitalDTO getdetails(@PathVariable int id) {
 		return hospitalService.getdetails(id);
-	}
-
+	} 
+@GetMapping("/getall")
+	public List<HospitalDTO> getall(){
+	return hospitalService.getall();
+}
+	
 	@GetMapping("/getname/{name}")
 	public HospitalDTO getname(@PathVariable("name") String name) {
 		return hospitalService.getname(name);
@@ -37,7 +41,11 @@ public class HospitalController {
 	public HospitalDTO create(@RequestBody HospitalDTO hospitaldto) {
 		return hospitalService.create(hospitaldto);
 	}
-
+ @PostMapping("/postall")
+ public List<HospitalDTO> createall(@RequestBody List<HospitalDTO> hospitaldto){
+	 return hospitalService.createall(hospitaldto);
+ }
+	
 	@PutMapping("/put")
 	public HospitalDTO update(@RequestBody HospitalDTO hospitaldto) {
 		return hospitalService.update(hospitaldto);
@@ -46,5 +54,5 @@ public class HospitalController {
 	@DeleteMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		return hospitalService.delete(id);
-	}
+	} 
 }
